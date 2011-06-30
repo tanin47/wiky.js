@@ -1,5 +1,5 @@
 /**
- * Wiky.js - Javascript library to convert Wikitext to HTML
+ * Wiky.js - Javascript library to converts Wiki MarkUp language to HTML.
  * No license. You can do whatever with it. Please give me some credits :P
  * - Tanin Na Nakorn 
  */
@@ -215,16 +215,16 @@ wiky.process_normal = function(wikitext) {
 	
 	// Image
 	{
-		var index = wikitext.indexOf("[Image:");
-		var end_index = wikitext.indexOf("]", index + 7);
+		var index = wikitext.indexOf("[[File:");
+		var end_index = wikitext.indexOf("]]", index + 7);
 		while (index > -1 && end_index > -1) {
 			
 			wikitext = wikitext.substring(0,index) 
 						+ wiky.process_image(wikitext.substring(index+7,end_index)) 
-						+ wikitext.substring(end_index+1);
+						+ wikitext.substring(end_index+2);
 		
-			index = wikitext.indexOf("[Image:");
-			end_index = wikitext.indexOf("]", index + 7);
+			index = wikitext.indexOf("[[File:");
+			end_index = wikitext.indexOf("]]", index + 7);
 		}
 	}
 	
