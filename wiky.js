@@ -1,6 +1,6 @@
 /**
  * Wiky.js - Javascript library to converts Wiki MarkUp language to HTML.
- * No license. You can do whatever with it. Please give me some credits :P
+ * You can do whatever with it. Please give me some credits (Apache License)
  * - Tanin Na Nakorn 
  */
 
