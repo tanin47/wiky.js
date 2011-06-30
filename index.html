@@ -1,0 +1,16 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="wiky.js"></script>
+		<title>Untitled Document</title>
+	</head>
+	<body>
+		<textarea onchange="$('#preview').html(wiky.process($(this).val()));" cols="60" rows="20"></textarea>
+		<br/>
+		<span style="display:block;border:1px solid #999999;" id="preview">
+			
+		</span>
+	</body>
+</html>
