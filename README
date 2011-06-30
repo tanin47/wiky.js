@@ -1,9 +1,9 @@
-Wiky.js - a javascript library to converts Wiki MarkUp language to HTML.
+Wiky.js - a javascript library to convert Wiki Markup language to HTML.
 =======================
 
 Introduction
 -------------------
-Wiky.js is a javascript library that converts Wiki MarkUp language to HTML.
+Wiky.js is a javascript library that converts Wiki Markup language to HTML.
 
 
 How to use it
@@ -12,8 +12,12 @@ Include wiki.js into your HTML file. Wiky.js has only one function, which is wik
 
 Please see index.html for an example.
 
-*wiki.js does not depend on jQuery, which is included for testing purpose.
+*wiky.js does not depend on jQuery, which is included for testing purpose.
 
+
+Future work
+-------------------
+I am working on Wiky right now (30 June 2011), which is Wiky for Ruby.
 
 
 Contributors
