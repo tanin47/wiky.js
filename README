@@ -1,0 +1,21 @@
+Wiky.js - a javascript library to parse Wiki MarkUp language
+=======================
+
+Introduction
+-------------------
+Wiky.js is a javascript library that converts Wiki MarkUp language to HTML.
+
+
+How to use it
+-------------------
+Include wiki.js into your HTML file. Wiky.js has only one function, which is wiky.process(wikitext).
+
+Please see index.html for an example.
+
+*wiki.js does not depend on jQuery, which is included for testing purpose.
+
+
+
+Contributors
+-------------------
+Tanin Na Nakorn
