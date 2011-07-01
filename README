@@ -21,6 +21,10 @@ Supported Syntax
 === Subheading ===
 [http://www.url.com Name of URLs]
 [[File:http://www.url.com/image.png Alternative Text]]
+ -------------------- (Horizontal line)
+: (Indentation)
+# Ordered bullet point
+* Unordered bullet point
 
 
 Future work
