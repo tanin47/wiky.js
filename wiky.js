@@ -23,11 +23,11 @@ wiky.process = function(wikitext) {
 		{
 			html += "<h3>"+line.substring(2,line.length-2)+"</h3>";
 		}
-		else if (line.match(/^:+ /)!=null)
+		else if (line.match(/^:+/)!=null)
 		{
 			// find start line and ending line
 			start = i;
-			while (i < lines.length && lines[i].match(/^\:+ /)!=null) i++;
+			while (i < lines.length && lines[i].match(/^\:+/)!=null) i++;
 			i--;
 			
 			html += wiky.process_indent(lines,start,i);
@@ -70,18 +70,18 @@ wiky.process_indent = function(lines,start,end) {
 	
 	var html = "<dl>";
 	
-	var count = lines[start].match(/^(\:+) /)[1].length;
+	var count = lines[start].match(/^(\:+)/)[1].length;
 	for(var i=start;i<=end;i++) {
 		
 		html += "<dd>";
 		
-		var this_count = lines[i].match(/^(\:+) /)[1].length;
+		var this_count = lines[i].match(/^(\:+)/)[1].length;
 		
-		html += wiky.process_normal(lines[i].substring(this_count+1));
+		html += wiky.process_normal(lines[i].substring(this_count));
 		
 		var nested_end = i;
 		for (var j=i+1;j<=end;j++) {
-			var nested_count = lines[j].match(/^(\:+) /)[1].length;
+			var nested_count = lines[j].match(/^(\:+)/)[1].length;
 			if (nested_count <= this_count) break;
 			else nested_end = j;
 		}

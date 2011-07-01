@@ -15,6 +15,14 @@ Please see index.html for an example.
 *wiky.js does not depend on jQuery, which is included for testing purpose.
 
 
+Supported Syntax
+-------------------
+== Heading ==
+=== Subheading ===
+[http://www.url.com Name of URLs]
+[[File:http://www.url.com/image.png Alternative Text]]
+
+
 Future work
 -------------------
 I am working on Wiky right now (30 June 2011), which is Wiky for Ruby.
