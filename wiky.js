@@ -32,7 +32,7 @@ wiky.process = function(wikitext) {
 			
 			html += wiky.process_indent(lines,start,i);
 		}
-		else if (line.match(/^-----*$/)!=null)
+		else if (line.match(/^----+(\s*)$/)!=null)
 		{
 			html += "<hr/>";
 		}
@@ -70,7 +70,6 @@ wiky.process_indent = function(lines,start,end) {
 	
 	var html = "<dl>";
 	
-	var count = lines[start].match(/^(\:+)/)[1].length;
 	for(var i=start;i<=end;i++) {
 		
 		html += "<dd>";
@@ -103,7 +102,6 @@ wiky.process_bullet_point = function(lines,start,end) {
 	
 	var html = (lines[start].charAt(0)=='*')?"<ul>":"<ol>";
 	
-	var count = lines[start].match(/^(\*+|\#+) /)[1].length;
 	for(var i=start;i<=end;i++) {
 		
 		html += "<li>";
@@ -208,7 +206,7 @@ wiky.process_image = function(txt) {
 	}
 	
 	
-	return "<br/><img src='"+url+"' alt=\""+label+"\" /><br/>";
+	return "<img src='"+url+"' alt=\""+label+"\" />";
 }
 
 wiky.process_normal = function(wikitext) {
