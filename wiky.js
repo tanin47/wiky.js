@@ -209,6 +209,22 @@ wiky.process_image = function(txt) {
 	return "<img src='"+url+"' alt=\""+label+"\" />";
 }
 
+wiky.process_video = function(url) {
+
+	if (url.match(/^(https?:\/\/)?(www.)?youtube.com\//) == null)
+	{
+		return "<b>"+url+" is an invalid YouTube URL</b>";
+	}
+	
+	if ((result = url.match(/^(https?:\/\/)?(www.)?youtube.com\/watch\?(.*)v=([^&]+)/)) != null)
+	{
+		url = "http://www.youtube.com/embed/"+result[4];
+	}
+	
+	
+	return '<iframe width="480" height="390" src="'+url+'" frameborder="0" allowfullscreen></iframe>';
+}
+
 wiky.process_normal = function(wikitext) {
 	
 	// Image
@@ -225,6 +241,22 @@ wiky.process_normal = function(wikitext) {
 			end_index = wikitext.indexOf("]]", index + 7);
 		}
 	}
+	
+	// Video
+	{
+		var index = wikitext.indexOf("[[Video:");
+		var end_index = wikitext.indexOf("]]", index + 8);
+		while (index > -1 && end_index > -1) {
+			
+			wikitext = wikitext.substring(0,index) 
+						+ wiky.process_video(wikitext.substring(index+8,end_index)) 
+						+ wikitext.substring(end_index+2);
+		
+			index = wikitext.indexOf("[[Video:");
+			end_index = wikitext.indexOf("]]", index + 8);
+		}
+	}
+	
 	
 	// URL
 	var protocols = ["http","ftp","news"];
