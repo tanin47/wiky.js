@@ -26,10 +26,10 @@ Supported Syntax
 # Ordered bullet point
 * Unordered bullet point
 
-
-Future work
+Future Work
 -------------------
-I am working on Wiky right now (30 June 2011), which is Wiky for Ruby.
+Wiky (Ruby) and Wiky.js (Javascript) are the foundation for my future rich content textbox.
+
 
 License
 ------------------

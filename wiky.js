@@ -32,7 +32,7 @@ wiky.process = function(wikitext) {
 			
 			html += wiky.process_indent(lines,start,i);
 		}
-		else if (line.match(/^-----*$/)!=null)
+		else if (line.match(/^----+(\s*)$/)!=null)
 		{
 			html += "<hr/>";
 		}
@@ -70,7 +70,6 @@ wiky.process_indent = function(lines,start,end) {
 	
 	var html = "<dl>";
 	
-	var count = lines[start].match(/^(\:+)/)[1].length;
 	for(var i=start;i<=end;i++) {
 		
 		html += "<dd>";
@@ -103,7 +102,6 @@ wiky.process_bullet_point = function(lines,start,end) {
 	
 	var html = (lines[start].charAt(0)=='*')?"<ul>":"<ol>";
 	
-	var count = lines[start].match(/^(\*+|\#+) /)[1].length;
 	for(var i=start;i<=end;i++) {
 		
 		html += "<li>";
@@ -208,7 +206,23 @@ wiky.process_image = function(txt) {
 	}
 	
 	
-	return "<br/><img src='"+url+"' alt=\""+label+"\" /><br/>";
+	return "<img src='"+url+"' alt=\""+label+"\" />";
+}
+
+wiky.process_video = function(url) {
+
+	if (url.match(/^(https?:\/\/)?(www.)?youtube.com\//) == null)
+	{
+		return "<b>"+url+" is an invalid YouTube URL</b>";
+	}
+	
+	if ((result = url.match(/^(https?:\/\/)?(www.)?youtube.com\/watch\?(.*)v=([^&]+)/)) != null)
+	{
+		url = "http://www.youtube.com/embed/"+result[4];
+	}
+	
+	
+	return '<iframe width="480" height="390" src="'+url+'" frameborder="0" allowfullscreen></iframe>';
 }
 
 wiky.process_normal = function(wikitext) {
@@ -227,6 +241,22 @@ wiky.process_normal = function(wikitext) {
 			end_index = wikitext.indexOf("]]", index + 7);
 		}
 	}
+	
+	// Video
+	{
+		var index = wikitext.indexOf("[[Video:");
+		var end_index = wikitext.indexOf("]]", index + 8);
+		while (index > -1 && end_index > -1) {
+			
+			wikitext = wikitext.substring(0,index) 
+						+ wiky.process_video(wikitext.substring(index+8,end_index)) 
+						+ wikitext.substring(end_index+2);
+		
+			index = wikitext.indexOf("[[Video:");
+			end_index = wikitext.indexOf("]]", index + 8);
+		}
+	}
+	
 	
 	// URL
 	var protocols = ["http","ftp","news"];
