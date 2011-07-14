@@ -5,6 +5,7 @@
 		<script type="text/javascript" src="jquery-1.4.2.min.js"></script>
 		<script type="text/javascript" src="wiky.js"></script>
 		<title>Untitled Document</title>
+	<link href="wiky.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
 		<textarea id="textarea" onchange="$('#preview').html(wiky.process($(this).val()));" cols="60" rows="20">=== Heading ===
@@ -28,9 +29,9 @@ This is a bold link:'''[http://www.google.com Google]'''.
 This is a bold-italic link:'''''[http://www.google.com Google]'''''.
 This is '''bold''', '''''bold-italic''''', and ''italic''
 
-
+[[Video:http://www.youtube.com/embed/ovVfLancwys]]
 # First
-# second
+# secon
 ## Second-First
 *** First Point
 *** Second Point
@@ -44,7 +45,7 @@ This is '''bold''', '''''bold-italic''''', and ''italic''
 
 </textarea>
 		<br/>
-		<span style="display:block;border:1px solid #999999;" id="preview">
+		<span style="display:block;border:1px solid #999999;" class="wiky_preview_area" id="preview">
 		</span>
 	</body>
 </html>
