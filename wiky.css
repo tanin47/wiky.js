@@ -69,3 +69,11 @@
 
 	text-shadow:0 1px 0 rgba(255, 255, 255, 1);
 }
+
+
+.wiky_preview_area > ol, 
+.wiky_preview_area > ul, 
+.wiky_preview_area > ul > li,
+.wiky_preview_area > ol > li {
+	list-style: disc inside none;
+}
