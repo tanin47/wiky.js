@@ -1,8 +1,8 @@
 Wiky.js - a javascript library to convert Wiki Markup language to HTML.
 =======================
 
-Introduction
--------------------
+(It is buggy, please use with care)
+
 Wiky.js is a javascript library that converts Wiki Markup language to HTML.
 
 
@@ -15,25 +15,24 @@ Please see index.html for an example.
 *wiky.js does not depend on jQuery, which is included for testing purpose.
 
 
+
 Supported Syntax
 -------------------
-== Heading ==
-=== Subheading ===
-[http://www.url.com Name of URLs]
-[[File:http://www.url.com/image.png Alternative Text]]
- -------------------- (Horizontal line)
-: (Indentation)
-# Ordered bullet point
-* Unordered bullet point
+* == Heading ==
+* === Subheading ===
+* [http://www.url.com Name of URLs]
+* [[File:http://www.url.com/image.png Alternative Text]]
+* -------------------- (Horizontal line)
+* : (Indentation)
+* # Ordered bullet point
+* * Unordered bullet point
 
-Future Work
--------------------
-Wiky (Ruby) and Wiky.js (Javascript) are the foundation for my future rich content textbox.
 
 
 License
 ------------------
-You can do whatever you want with it. Just give me some credit. (Apache License)
+Creative Commons 3.0
+
 
 
 Contributors
