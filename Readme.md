@@ -43,6 +43,8 @@ NPM
 
 ```
 $ npm install wiky.js
+
+$ npm install https://github.com/tanin47/wiky.js/tarball/master
 ```
 
 ```
