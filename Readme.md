@@ -36,6 +36,32 @@ Tanin Na Nakorn
 
 Tanun Niyomjit (Designer)
 
+Dav Glass [davglass]
+
+NPM
+---
+
+```
+$ npm install wiky.js
+
+$ npm install https://github.com/tanin47/wiky.js/tarball/master
+```
+
+```
+var wiky = require('wiky.js');
+
+var html = wiky.process('<string of wiki code>', {});
+
+var html = wiky.process('<string of wiki code>', { 'link-image': false });
+```
+
+
+Options
+-------
+
+It only supports one option at the moment: `link-image`
+
+Setting this to `false` will tell `wiky.js` to not imbed CSS into the markup for link icons.
 
 License
 ---------

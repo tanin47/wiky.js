@@ -1,0 +1,24 @@
+{
+    "name": "wiky.js",
+    "version": "0.0.1",
+    "description": "Wiki text parser",
+    "main": "wiky.js",
+    "author": "Tanin Na Nakorn <tanin47@yahoo.com>",
+    "contributors": [
+        { "name": "Dav Glass", "email": "davglass@gmail.com"}
+    ],
+    "keywords": [
+        "mediawiki", "wiki", "parser"
+    ],
+    "bugs": { "url" : "https://github.com/tanin47/wiky.js/issues" },
+    "licenses":[
+        {
+            "type" : "WTFPL",
+            "url" : "http://sam.zoy.org/wtfpl/"
+        }
+    ],
+    "repository": {
+        "type":"git",
+        "url":"https://github.com/tanin47/wiky.js.git"
+    }
+}
