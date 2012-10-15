@@ -4,10 +4,16 @@
  * - Tanin Na Nakorn 
  */
 
-var wiky = {}
+var wiky = {
+    options: {
+        'link-image': true //Preserve backward compat
+    }
+}
 
 
-wiky.process = function(wikitext) {
+wiky.process = function(wikitext, options) {
+    wiky.options = options || wiky.options;
+
 	var lines = wikitext.split(/\r?\n/);
 	
 	var html = "";
@@ -101,6 +107,8 @@ wiky.process_bullet_point = function(lines,start,end) {
 	var i = start;
 	
 	var html = (lines[start].charAt(0)=='*')?"<ul>":"<ol>";
+
+    html += '\n';
 	
 	for(var i=start;i<=end;i++) {
 		
@@ -171,28 +179,27 @@ wiky.process_bullet_point = function(lines,start,end) {
 			i = nested_end;
 		}
 		
-		html += "</li>";
+		html += "</li>\n";
 	}
 	
 	html += (lines[start].charAt(0)=='*')?"</ul>":"</ol>";
+    html += '\n';
 	return html;
 }
 
 wiky.process_url = function(txt) {
 	
-	var index = txt.indexOf(" ");
+	var index = txt.indexOf(" "),
+        url = txt,
+        label = txt,
+        css = ' style="background: url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAFZJREFUeF59z4EJADEIQ1F36k7u5E7ZKXeUQPACJ3wK7UNokVxVk9kHnQH7bY9hbDyDhNXgjpRLqFlo4M2GgfyJHhjq8V4agfrgPQX3JtJQGbofmCHgA/nAKks+JAjFAAAAAElFTkSuQmCC\") no-repeat scroll right center transparent;padding-right: 13px;"';
 	
-	if (index == -1) 
-	{
-		return "<a target='"+txt+"' href='"+txt+"' style='background: url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAFZJREFUeF59z4EJADEIQ1F36k7u5E7ZKXeUQPACJ3wK7UNokVxVk9kHnQH7bY9hbDyDhNXgjpRLqFlo4M2GgfyJHhjq8V4agfrgPQX3JtJQGbofmCHgA/nAKks+JAjFAAAAAElFTkSuQmCC\") no-repeat scroll right center transparent;padding-right: 13px;'></a>";
+	if (index !== -1) {
+		url = txt.substring(0, index);
+		label = txt.substring(index + 1);
 	}
-	else
-	{
-		url = txt.substring(0,index);
-		label = txt.substring(index+1);
-		return "<a target='"+url+"' href='"+url+"' style='background: url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAFZJREFUeF59z4EJADEIQ1F36k7u5E7ZKXeUQPACJ3wK7UNokVxVk9kHnQH7bY9hbDyDhNXgjpRLqFlo4M2GgfyJHhjq8V4agfrgPQX3JtJQGbofmCHgA/nAKks+JAjFAAAAAElFTkSuQmCC\") no-repeat scroll right center transparent;padding-right: 13px;'>"+label+"</a>";
-	}
-}
+	return '<a href="' + url + '"' + (wiky.options['link-image'] ? css : '') + '>' + label + '</a>';
+};
 
 wiky.process_image = function(txt) {
 	var index = txt.indexOf(" ");
@@ -306,3 +313,8 @@ wiky.process_normal = function(wikitext) {
 	return wikitext;
 }
 
+if (typeof exports === 'object') {
+    for (var i in wiky) {
+        exports[i] = wiky[i];
+    }
+}
